@@ -1,0 +1,30 @@
+
+#newMail:hover {
+    text-decoration: none;
+}
+
+#newMail {
+    color: #dc3545;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#mdp {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#imgGoogle {
+    height: 20px;
+    width: auto;
+    margin-bottom: 4px;
+    padding-right: 8px;
+}
+
+.btn-google {
+    margin-top:13px;
+}
+
+#forgot-pass{
+    cursor: pointer;
+}

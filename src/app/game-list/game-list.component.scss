@@ -1,0 +1,43 @@
+.main {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    margin:10px;
+}
+
+.listSpan {
+    margin-right: 6px;
+}
+
+.photoJeu {
+   max-width:225px;
+   max-height: 225px;
+   justify-content: center;
+}
+
+.listGames:hover{
+    cursor: pointer;
+    background-color: lightgrey;
+}
+
+.listGames{
+    width: 265px;
+    height: 305px;
+}
+
+#divFilter {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .ngx-pagination{
+      padding-left: 0 !important;
+  }

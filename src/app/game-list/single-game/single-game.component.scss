@@ -1,0 +1,61 @@
+#divImage {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+}
+
+.center {
+    text-align: center;
+}
+
+.imgProfil {
+    max-width: auto;
+    max-height: 300px;
+}
+
+#containerGenrePlateforme {
+    display: flex;
+    flex-wrap: wrap;
+    border:1px solid rgba(0,0,0,0.125);
+}
+
+#divPlateforme {
+    border-right: 1px solid rgba(0, 0,0, 0.2);
+}
+
+.game {
+    flex: 0 0 50%;
+}
+
+.game > div {
+    background-color: rgba(0, 0,0, 0.1);
+}
+
+#detailsDescription {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-around;
+}
+
+#displayAvis {
+    text-align: center;
+    font-style: italic;
+}
+
+.displaySpan {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 700px) {
+    #avis {
+        overflow-y: auto;
+        max-height: 200px;
+    }
+}
+
+@media screen and (min-width: 701px) {
+    #avis {
+        overflow-y: auto;
+        max-height: 400px;
+    }
+}

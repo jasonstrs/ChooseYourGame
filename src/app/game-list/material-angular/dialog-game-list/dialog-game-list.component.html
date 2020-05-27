@@ -1,0 +1,52 @@
+<h1 mat-dialog-title>Sélectionner votre filtre</h1>
+<div mat-dialog-content>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <!-- Genre -->
+      <div class="custom-control custom-checkbox" style="display: flex;align-items: center;">
+        <input type="checkbox" class="custom-control-input" id="check1" (change)="onActivateSelect($event)" >
+        <label class="custom-control-label" for="check1">Genres</label>
+        <select class="custom-select ml-2" id="inputGenre" [(ngModel)]="data.genre" *ngIf="displaySelectGenre">
+          <option *ngFor="let genre of genres">{{genre}}</option>
+        </select>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <!-- Plateforme -->
+      <div class="custom-control custom-checkbox" style="display: flex;align-items: center;">
+        <input type="checkbox" class="custom-control-input" id="check2" (change)="onActivateSelect($event)">
+        <label class="custom-control-label" for="check2">Plateforme</label>
+        <select class="custom-select ml-2" id="inputPlateforme" placeholder="Choose"
+            [(ngModel)]="data.plateforme" *ngIf="displaySelectPlateforme">
+          <option *ngFor="let plateforme of plateformes">{{plateforme}}</option>
+        </select>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <!-- Age  -->
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" [(ngModel)]="data.age" (change)="onChangeAge($event)" id="check3">
+        <label class="custom-control-label" for="check3" >Âge croissant</label>
+      </div>
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" [(ngModel)]="data.ageDescending" (change)="onChangeAge($event)" id="check5">
+        <label class="custom-control-label" for="check5">Âge décroissant</label>
+      </div>
+    </li>
+    <li class="list-group-item">
+      <!-- Date de sortie -->
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" [(ngModel)]="data.releaseYear" (change)="onChangeDate($event)" class="custom-control-input" id="check4">
+        <label class="custom-control-label" for="check4">Date de sortie croissante</label>
+      </div>
+      <div class="custom-control custom-checkbox">
+        <input type="checkbox" class="custom-control-input" [(ngModel)]="data.releaseYearDescending" (change)="onChangeDate($event)" id="check6">
+        <label class="custom-control-label" for="check6">Date de sortie décroissante</label>
+      </div>
+    </li>
+  </ul>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Retour</button>
+  <button mat-button [mat-dialog-close]="data">Filtrer</button>
+</div>

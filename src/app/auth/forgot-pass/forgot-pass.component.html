@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+        <h2>Mot de passe oublié</h2>
+        <form [formGroup]="newPassForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" id="email" class="form-control" formControlName="email" placeholder="Saisir votre adresse mail">
+            </div>
+            
+            <button class="btn btn-outline-primary" type="submit" >Nouveau mot de passe</button>
+        </form>
+        <p class="text-danger">{{ errorMessage }}</p>
+    </div>
+</div>

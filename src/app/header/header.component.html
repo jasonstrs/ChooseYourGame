@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <a class="navbar-brand" routerLink="games">Choose Your Game</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <ul class="nav">
+        <a class="nav-item nav-link" routerLinkActive="active" routerLink="games">Jeux</a>
+        <a class="nav-item nav-link"  *ngIf="isAuth" routerLinkActive="active" routerLink="games/new">Ajouter un jeu</a>
+        <a class="nav-item nav-link"  *ngIf="isAdmin" routerLinkActive="active" routerLink="/admin/validation">Validation Jeux</a> 
+        
+      </ul>
+      <ul class="nav">
+        <input type="text" id="search" placeholder="Search..."  (keyup)="onSearchViaKey($event)" class="form-control" style="width: auto;" #inputSearch>
+        <button class="btn btn-outline-success ml-2" (click)="searchGame(inputSearch)">Search</button> 
+        <a class="nav-item nav-link"  *ngIf="!isAuth" routerLinkActive="active" routerLink="auth/signin">Connexion</a>
+        <a class="nav-item nav-link"  *ngIf="!isAuth" routerLinkActive="active" routerLink="auth/signup">Inscription</a>
+        <a class="nav-item nav-link" id="deconnexion" *ngIf="isAuth" style="cursor: pointer;" (click)="onSignOut()" >Deconnexion</a>
+      </ul>
+    </div>
+  </nav>
+ 
+

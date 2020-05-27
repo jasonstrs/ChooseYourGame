@@ -1,0 +1,114 @@
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+        <h2 style="text-align: center;">Enregistrer un nouveau jeu</h2>
+        <form [formGroup]="gameForm" (ngSubmit)="onSaveGame()">
+            <div class="form-group">
+                <label for="title">Titre<span class="red">*</span></label>
+                <input type="text" id="title" class="form-control" 
+                    formControlName="title" placeholder="Saisir un titre"
+                    [ngClass]="{'is-invalid': submitted && f.title.errors}">
+                <div *ngIf="submitted && f.title.errors" class="invalid-feedback">
+                    <div *ngIf="f.title.errors.required">Veuillez saisir un titre</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="developpeur">Développeur<span class="red">*</span></label>
+                <input type="text" id="developpeur" class="form-control"
+                 formControlName="developpeur" placeholder="Saisir un développeur"
+                 [ngClass]="{'is-invalid': submitted && f.developpeur.errors}"> 
+                 <div *ngIf="submitted && f.developpeur.errors" class="invalid-feedback">
+                    <div *ngIf="f.developpeur.errors.required">Veuillez saisir un développeur</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Âge requis<span class="red">*</span></label>
+                <input type="number" id="age" class="form-control" min="1" max="18" formControlName="age">
+            </div>
+
+            <div class="form-group">
+                <label for="genre">Genre(s)<span class="red">*</span></label>
+                
+                <div class="input-group" >
+                    <select class="custom-select" id="select" aria-label="" [disabled]="isFull" #refSelectGenre 
+                    [ngClass]="{'is-invalid': submitted && !oneGenre}"
+                    >
+                        <option *ngFor="let genre of genres; let i=index"  value="{{i}}">{{genre}}</option>
+                    </select>
+                    <div class="input-group-prepend">
+                        <button class="btn btn-outline-secondary" type="button" [disabled]="isFull" (click)="ajouterGenre(refSelectGenre)">Ajouter</button>
+                    </div>
+                </div>
+                <ul class="list-group list-group-horizontal" *ngIf="oneGenre" id="listGenreSelected"> <!--S'il y a au moins un genre, on affiche-->
+                    <li class="list-group-item" *ngFor="let genreSelected of genresSelected;let i=index">{{genreSelected}}
+                        <svg (click)="removeGenre(i)" class="bi bi-trash" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.5 5.5A.5.5 0 016 6v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V6z"/>
+                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 01-1 1H13v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h-.5a1 1 0 01-1-1V2a1 1 0 011-1H6a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM4.118 4L4 4.059V13a1 1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" clip-rule="evenodd"/>
+                      </svg>
+                    </li>
+                </ul>
+                
+                <p class="text-muted" *ngIf="!submitted">Veuillez saisir au moins un genre</p>
+                <div *ngIf="submitted && !oneGenre" class="custom-control invalid-feedback" style="padding-left: 0%;">
+                    Veuillez saisir au moins un genre
+                </div>               
+            </div>
+            
+            <div class="form-group">
+                <label for="plateforme">Plateforme(s)<span class="red">*</span></label>
+                
+                <div class="input-group">
+                    <select class="custom-select" id="selectPlateforme" [disabled]="isEmpty" aria-label="" #refSelectPlateforme
+                    [ngClass]="{'is-invalid': submitted && !onePlateforme}"
+                    >
+                        <option *ngFor="let plateforme of plateformes; let i=index" value="{{i}}">{{plateforme}}</option>
+                    </select>
+                    <div class="input-group-prepend">
+                        <button class="btn btn-outline-secondary" type="button" [disabled]="isEmpty"  (click)="ajouterPlateforme(refSelectPlateforme)">Ajouter</button>
+                    </div>
+                </div>
+                <ul class="list-group list-group-horizontal" id="listPlateformeSelected" *ngIf="onePlateforme"> <!--S'il y a au moins un genre, on affiche-->
+                    <li class="list-group-item" *ngFor="let plateformeSelected of plateformesSelected;let i=index">{{plateformeSelected}}
+                        <svg (click)="removePlateforme(i)" class="bi bi-trash" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M5.5 5.5A.5.5 0 016 6v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm2.5 0a.5.5 0 01.5.5v6a.5.5 0 01-1 0V6a.5.5 0 01.5-.5zm3 .5a.5.5 0 00-1 0v6a.5.5 0 001 0V6z"/>
+                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 01-1 1H13v9a2 2 0 01-2 2H5a2 2 0 01-2-2V4h-.5a1 1 0 01-1-1V2a1 1 0 011-1H6a1 1 0 011-1h2a1 1 0 011 1h3.5a1 1 0 011 1v1zM4.118 4L4 4.059V13a1 1 0 001 1h6a1 1 0 001-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z" clip-rule="evenodd"/>
+                      </svg>
+                    </li>
+                </ul>
+                <p class="text-muted" *ngIf="!submitted">Veuillez saisir au moins une plateforme</p>
+                <div *ngIf="submitted && !onePlateforme" class="custom-control invalid-feedback" style="padding-left: 0%;">
+                    Veuillez saisir au moins une plateforme
+                </div> 
+            </div>
+
+            <div class="form-group">
+                <div class="custom-control custom-checkbox mr-sm-2">
+                    <input type="checkbox" class="custom-control-input" id="customControlAutosizing" formControlName="multijoueur">
+                    <label class="custom-control-label" for="customControlAutosizing">Multijoueur</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="releaseYear">Année de sortie<span class="red">*</span></label>
+                <input type="number" id="releaseYear" min="0" [max]="annee" class="form-control" formControlName="releaseYear">
+            </div>
+
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea class="form-control" id="description" formControlName="description" rows="3"></textarea>
+              </div>
+
+            <div class="form-group">
+                <div>
+                    <label for="file">Ajouter une photo</label>
+                    <img [src]="fileUrl" class="photoJeu">
+                    <input type="file" (change)="detectFiles($event)" name="file" id="photo" class="form-control" accept="image/*">
+                </div>
+            </div>
+            
+            <p class="red">* Champs obligatoires</p>
+            
+            <button class="btn btn-outline-success"  type="submit" >Enregistrer</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+<mat-form-field appearance="fill">
+    <mat-label>Textarea</mat-label>
+    <textarea matInput (keyup)="onSaveData()" [formControl]="description"></textarea>
+    <mat-error *ngIf="description.invalid">{{getErrorMessage()}}</mat-error>
+</mat-form-field>
+<div>
+    <button mat-button (click)="onNoClick()">Retour</button>
+    <button mat-button [disabled]="description.invalid" [mat-dialog-close]="data">Ajouter</button>
+</div>

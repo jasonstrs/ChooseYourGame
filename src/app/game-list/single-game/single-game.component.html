@@ -1,0 +1,58 @@
+<div *ngIf="modificationSuccess" class="alert alert-success mt-3" style="text-align: center;">Votre modification a été envoyée !</div>
+
+<div class="card mt-3" id="main" >
+    <button class="btn btn-outline-secondary" *ngIf="isAuth" (click)="onModif()">Proposer une modification</button>
+    <h2 class="center">{{game.title}}</h2>
+    <div id="divImage"><img class="imgProfil" [src]="game.photo"></div>
+    <div class="card-body" id="body">
+        <ul class="list-group"> <!--On met en place une liste d'items-->
+            <div class="card-header" style="border-bottom: none;background-color: rgba(0, 0,0, 0.1);">Description</div>
+            <li class="list-group-item"> <!-- Cette liste permet d'afficher la description, multijoueur et l'age-->
+                <p *ngIf="game.description">{{game.description}}</p>
+                <div id="detailsDescription"> 
+                    <div style="margin-right: 8px;"><b>Âge requis : </b>{{game.age}} ans</div>
+                    <div style="margin-right: 8px;"><b>Multijoueur : </b>{{game.multijoueur}}</div>
+                    <div><b>Année de sortie : </b>{{game.releaseYear}}</div>
+                    <div><p><b>Développeur : </b>{{game.developpeur}} </p></div>
+                </div>
+            </li>
+            <div id="containerGenrePlateforme">
+                <div class="game" id="divPlateforme">
+                    <div class="card-header" style="border-radius: 0%;" >Plateforme(s)</div>
+                    <li class="list-group-item" style="border: none;" *ngFor="let plateforme of game.plateforme">{{plateforme}}</li>
+                </div>
+                <div class="game">
+                    <div class="card-header" style="border-radius: 0%;">Genre(s)</div>
+                    <li class="list-group-item" style="border: none;" *ngFor="let genre of game.genre">{{genre}}</li>
+                </div>
+            </div>
+        </ul>
+        <p class="text-muted mt-2 mb-2" id="displayAvis"><span (click)="displayAvis()" class="displaySpan" *ngIf="!dispAvis"><b>Pour afficher les avis, cliquez ici !</b></span>
+            <span *ngIf="dispAvis" (click)="displayAvis()" class="displaySpan mb-2"><b>Pour cacher les avis, cliquez ici !</b></span>
+        </p>
+        <ul class="list-group" id="avis" *ngIf="dispAvis">
+            <button class="btn btn-outline-secondary" *ngIf="isAuth" (click)="displayPopupAvis()">Ajouter un avis</button>
+
+            <li *ngIf="!oneAvis" class="list-group-item list-group-item-warning">
+               <i>Il n'y a aucun avis pour ce jeu !</i>
+            </li>
+            <div *ngIf="oneAvis">
+                <li class="list-group-item list-group-item-warning" *ngFor="let avis of game.avis">
+                    <p style="margin: 0;"><b>{{avis.avis}}</b></p>
+                    <p style="margin: 0;"><i>{{avis.pseudo}} </i></p>
+                </li>
+            </div>
+        </ul>
+    </div>
+</div>
+
+
+
+<!--
+    Développeur
+    Age 1
+    Genre 2
+    Plateforme 2
+    Multijoueur 2
+    Description 1
+-->

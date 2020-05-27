@@ -1,0 +1,43 @@
+#photoGame {
+    max-width:225px;
+   max-height: 225px;
+}
+
+.listGame {
+    margin-left: 15px;
+}
+
+#containerGames{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.game {
+    flex: 0 0 50%;
+}
+
+.center {
+    text-align: center;
+}
+.photoGame {
+    max-width:300px;
+   max-height: 225px;
+}
+
+
+
+
+@media screen and (max-width: 700px) {
+    #navSearch {
+        overflow-y: auto;
+        height: 150px;
+    }
+}
+
+@media screen and (min-width: 701px) {
+    #navSearch {
+        overflow-y: auto;
+        height: 300px;
+    }
+}

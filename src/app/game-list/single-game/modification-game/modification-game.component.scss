@@ -1,0 +1,31 @@
+.imgProfil {
+    max-width: auto;
+    max-height: 350px;
+}
+
+.center {
+    text-align: center;
+}
+
+#top {
+    display: inline-flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+}
+
+svg {
+    cursor: pointer;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+#listGenreSelected,#listPlateformeSelected {
+    margin-top: 10px;
+}
+
+form {
+    display: inline;
+}
