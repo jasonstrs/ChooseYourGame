@@ -35,7 +35,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { DialogGameListComponent } from './game-list/material-angular/dialog-game-list/dialog-game-list.component'; 
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
-import { PopupAvisComponent } from './game-list/material-angular/popup-avis/popup-avis.component'; 
+import { PopupAvisComponent } from './game-list/material-angular/popup-avis/popup-avis.component';
+import { FooterComponent } from './footer/footer.component'; 
 
 var firebaseConfig = {
   apiKey: "YOUR_API_KEY_FIREBASE",
@@ -61,7 +62,8 @@ var firebaseConfig = {
     ForgotPassComponent,
     ModificationGameComponent,
     DialogGameListComponent,
-    PopupAvisComponent
+    PopupAvisComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

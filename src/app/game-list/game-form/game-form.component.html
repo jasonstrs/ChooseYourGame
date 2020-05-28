@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-8 col-sm-offset-2">
         <h2 style="text-align: center;">Enregistrer un nouveau jeu</h2>
-        <form [formGroup]="gameForm" (ngSubmit)="onSaveGame()">
+        <form [formGroup]="gameForm" (ngSubmit)="onSaveGame()" class="mb-4">
             <div class="form-group">
                 <label for="title">Titre<span class="red">*</span></label>
                 <input type="text" id="title" class="form-control" 
@@ -108,7 +108,7 @@
             
             <p class="red">* Champs obligatoires</p>
             
-            <button class="btn btn-outline-success"  type="submit" >Enregistrer</button>
+            <div id="last"><button class="btn btn-outline-success"  type="submit" >Enregistrer</button></div>
         </form>
     </div>
 </div>
